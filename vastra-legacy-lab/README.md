@@ -3,6 +3,8 @@
 A small, runnable stand-in for Vastra & Co.'s current estate, plus three months of logs for evidence collection.
 Everything is synthetic. It deliberately contains the defects behind R2, R4, R5 and R15a.
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the application component and integration diagram.
+
 ## What is inside
 
 | Path | What it is |
