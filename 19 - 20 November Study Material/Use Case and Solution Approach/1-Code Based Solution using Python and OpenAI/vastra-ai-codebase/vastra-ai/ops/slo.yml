@@ -1,0 +1,13 @@
+# SLOs per pillar (reviewed monthly by the FDE + Vastra product owner)
+slos:
+  checkout_availability: {target: 99.9, window: 30d}
+  checkout_latency_p95_ms: {target: 800}
+  search_latency_p95_ms: {target: 300}
+  stock_event_freshness_s: {target: 60}        # was 4 hours
+  price_propagation_s: {target: 60}            # was nightly
+  oversell_rate_pct: {target: 0.1}
+  dq_score: {target: 0.98}
+  agent_hitl_override_rate_pct: {alert_above: 20}
+rollback:
+  trigger: "any SLO burn-rate > 2x for 1h OR eval gate regression"
+  action: "flip feature flag off; route traffic back to monolith path (strangler facade)"

@@ -1,0 +1,16 @@
+# Local stack. In production the in-memory bus becomes Kafka + Debezium CDC from the
+# monolith MySQL, ERP and WMS; vectors move to pgvector/OpenSearch.
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      VASTRA_API_KEYS: dev-key
+      VASTRA_LLM_PROVIDER: stub        # set to anthropic + VASTRA_LLM_API_KEY for a real model
+  prometheus:
+    image: prom/prometheus
+    ports: ["9090:9090"]
+    volumes: ["./ops/prometheus.yml:/etc/prometheus/prometheus.yml"]
+  grafana:
+    image: grafana/grafana
+    ports: ["3000:3000"]

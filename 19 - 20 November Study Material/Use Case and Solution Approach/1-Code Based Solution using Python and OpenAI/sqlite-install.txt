@@ -1,0 +1,31 @@
+1.Open PowerShell or Command Prompt and run:
+ 
+winget install SQLite.SQLite
+ 
+ 
+2.Close and reopen the terminal, then check it worked:
+ 
+sqlite3 --version
+ 
+ 
+3.Open Command Prompt or PowerShell and type:
+ 
+sqlite3
+ 
+You’ll see a sqlite> prompt. This opens a temporary in-memory database, so anything you create is lost when you exit.
+ 
+ 
+4.Open or create a database file
+ 
+This is the usual way:
+ 
+sqlite3 *.db
+ 
+ 
+5. Working with SQLite
+ 
+MySQL	                   SQLite
+SHOW TABLES;	            .tables
+DESCRIBE products;	.schema products
+SHOW DATABASES;	            .databases
+USE otherdb;	      .open other.db

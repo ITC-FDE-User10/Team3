@@ -1,0 +1,16 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test-eval-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - name: Unit + integration tests
+        run: pytest -q
+      - name: AI eval gates (search, RAG, routing, red-team, forecast)
+        run: python -m evals.run_evals
+      - name: Build image
+        run: docker build -t vastra-ai:${{ github.sha }} .
